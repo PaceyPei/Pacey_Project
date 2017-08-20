@@ -4,6 +4,9 @@
 
 #include "stm32f1xx_hal.h"
 
+#include "usart.h"
+
+
 typedef float f32;
 typedef double  f64;
 
