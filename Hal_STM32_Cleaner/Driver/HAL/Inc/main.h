@@ -54,14 +54,6 @@ void _Error_Handler(char *, int);
 
 #define Error_Handler() _Error_Handler(__FILE__, __LINE__)
 
-#define TXBUFFERSIZE                      (COUNTOF(aTxBuffer) - 1)
-
-/* Size of Reception buffer */
-#define RXBUFFERSIZE                      10
-
-/* Exported macro ------------------------------------------------------------*/
-#define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
-	
 /**
   * @}
   */ 
