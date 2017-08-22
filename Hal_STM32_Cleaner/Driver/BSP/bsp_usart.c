@@ -62,17 +62,28 @@ bool BspUsart_RecvData(BspUsartType *hcomm, u8 **pbuf, u32* plen)
 {
 	if(hcomm->huart == NULL) return FALSE;
 	
+	/* 假定函数进入后DMA Buffer里面已经存了四个单元的数据，DMA单元个数总共设置为20*/
+	/*
+	__HAL_DMA_GET_COUNTER() 这个函数的功能是获得DMA 接收buffer里面剩余的数据单元
+	也就是还没被填充的数据单元。
+	下面一行代码：data_cnt 得到的是DMA Buffer里面已存的数据单元个数，这些已存的单
+	元待取用。
+	*/
 	u16 data_cnt = hcomm->buffer_size - __HAL_DMA_GET_COUNTER(hcomm->huart->hdmarx);
+	
+	/* 获得数据单元的起始地址，因为其实地址可能不是DMA Buffer的首地址	*/
 	*pbuf = &hcomm->dma_rx_buffer[hcomm->offset];
+	
+	/* 剩余单元个数与偏移量的判断，最初偏移量offset是0	*/
 	if(data_cnt < hcomm->offset)
 	{
-		*plen = hcomm->buffer_size - hcomm->offset;
+		*plen = hcomm->buffer_size - hcomm->offset;		
 		hcomm->offset = 0;
 	}
 	else
 	{
-		*plen = data_cnt - hcomm->offset;
-		hcomm->offset = data_cnt;
+		*plen = data_cnt - hcomm->offset;	/* plen获得的是DMA Buffer 里面还能够被填充的单元个数，假定已经存了*/	
+		hcomm->offset = data_cnt;			/* 把偏移量重新定位置*/
 	}
 	
 	if(*plen > 0)	return TRUE;

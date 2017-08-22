@@ -114,7 +114,7 @@ int main(void)
 	if (HAL_UART_Init(&huart1) != HAL_OK)
 	{
 	/* Initialization Error */
-	Error_Handler();
+		Error_Handler();
 	}
 
 	/*##-2- Start the transmission process #####################################*/
