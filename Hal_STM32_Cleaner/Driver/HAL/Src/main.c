@@ -44,7 +44,8 @@
 
 /* USER CODE BEGIN Includes */
 #include "bsp.h"
-
+#include "comm.h"
+#include "bsp_usart.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -106,7 +107,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	Bsp_Init();
   /* USER CODE END 2 */
-
+		send_test();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	if (HAL_UART_Init(&huart1) != HAL_OK)
@@ -117,18 +118,20 @@ int main(void)
 
 	/*##-2- Start the transmission process #####################################*/
 	/* User start transmission data through "TxBuffer" buffer */
-	if (HAL_UART_Transmit_DMA(&huart1, (uint8_t *)aTxBuffer, 50) != HAL_OK)
-	{
-	/* Transfer error in transmission process */
-		Error_Handler();
-	}
+//	if (HAL_UART_Transmit_DMA(&huart1, (uint8_t *)aTxBuffer, sizeof(aTxBuffer)) != HAL_OK)
+//	{
+//	/* Transfer error in transmission process */
+//		Error_Handler();
+//	}
+	
+	UserUsart_SendData(&CommUsart, (uint8_t *)aTxBuffer, sizeof(aTxBuffer));
 
 	while (1)
 	{
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-
+		
 	}
   /* USER CODE END 3 */
 

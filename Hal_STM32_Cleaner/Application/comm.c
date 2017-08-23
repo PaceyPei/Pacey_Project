@@ -3,8 +3,8 @@
 
 #define UART_BUFF_SIZE  128
 
-static BspUsartType CommUsart;
-static u8 UartBuffer[UART_BUFF_SIZE];
+BspUsartType CommUsart;
+static u8 UartBuffer[UART_BUFF_SIZE] = {"ddddddddddddddddddddddd\n"};
 
 bool AppComm_Init(UART_HandleTypeDef *huart)
 {
@@ -19,7 +19,10 @@ bool AppComm_Init(UART_HandleTypeDef *huart)
 
 void send_test(void)
 {
-	UserUsart_SendData(&CommUsart, UartBuffer, 10);
+	UserUsart_SendData(&CommUsart, (u8 *)UartBuffer, sizeof(UartBuffer));
 	HAL_Delay(500);
 }
+
+//UserUsart_SendData(&CommUsart, (uint8_t *)aTxBuffer, sizeof(aTxBuffer));
+
 

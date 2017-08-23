@@ -8,6 +8,9 @@
 #include "generic_config.h"
 #include "bsp_usart.h"
 
+extern BspUsartType CommUsart;
+
+
 bool AppComm_Init(UART_HandleTypeDef *huart);
 void send_test(void);
 
