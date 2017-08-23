@@ -2,5 +2,7 @@ Hal_STM32_Cleaner/Project/Hal_STM32_Cleaner/
 Hal_STM32_Cleaner/Driver/HAL/MDK-ARM/Hal_STM32_Cleaner/
 *.txt
 
-Hal_STM32_Cleaner/Driver/HAL/MDK-ARM/Hal_STM32_Cleaner.uvguix.Pacey
+Hal_STM32_Cleaner/Project/Hal_STM32_Cleaner.uvguix.Pacey
 Hal_STM32_Cleaner/Project/Hal_STM32_Cleaner.uvguix.Pacey.bak
+Hal_STM32_Cleaner/Project/Hal_STM32_Cleaner.uvguix.Administrator
+Hal_STM32_Cleaner/Project/JLinkLog.txt
