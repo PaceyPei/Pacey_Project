@@ -45,6 +45,45 @@
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/
+#define CKTIM_APB1 64000000
+#define CKTIM_APB2 64000000
+#define PWM_ALIGN_FACTOR 1
+#define PWM_PRSC 0
+#define PWM_CNT_FREQ (CKTIM_APB2 / PWM_ALIGN_FACTOR / (PWM_PRSC + 1))
+#define PWM_FREQ 20000
+#define PWM_PERIOD (PWM_CNT_FREQ / PWM_FREQ)
+#define ENCODER_PERIOD 4096
+
+#define WALL_DIST_Pin GPIO_PIN_0
+#define WALL_DIST_GPIO_Port GPIOC
+#define VBAT_ADC_Pin GPIO_PIN_1
+#define VBAT_ADC_GPIO_Port GPIOC
+#define MID_BROOM_I_Pin GPIO_PIN_0
+#define MID_BROOM_I_GPIO_Port GPIOA
+#define FAN_I_Pin GPIO_PIN_1
+#define FAN_I_GPIO_Port GPIOA
+#define SIDE_BROOM_I_Pin GPIO_PIN_2
+#define SIDE_BROOM_I_GPIO_Port GPIOA
+#define GROUND_R_Pin GPIO_PIN_3
+#define GROUND_R_GPIO_Port GPIOA
+#define GROUND_L_Pin GPIO_PIN_4
+#define GROUND_L_GPIO_Port GPIOA
+#define GROUND_M_Pin GPIO_PIN_5
+#define GROUND_M_GPIO_Port GPIOA
+#define L_WHEEL_I_Pin GPIO_PIN_0
+#define L_WHEEL_I_GPIO_Port GPIOB
+#define R_WHEEL_I_Pin GPIO_PIN_1
+#define R_WHEEL_I_GPIO_Port GPIOB
+#define GROUND_PWR_Pin GPIO_PIN_8
+#define GROUND_PWR_GPIO_Port GPIOA
+#define CHARGE_OK_Pin GPIO_PIN_11
+#define CHARGE_OK_GPIO_Port GPIOA
+#define MCU_PWR_Pin GPIO_PIN_12
+#define MCU_PWR_GPIO_Port GPIOA
+#define GARBAGE_PWR_Pin GPIO_PIN_4
+#define GARBAGE_PWR_GPIO_Port GPIOB
+#define TOP_PWR_Pin GPIO_PIN_5
+#define TOP_PWR_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
